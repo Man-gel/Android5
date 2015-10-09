@@ -4,13 +4,22 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.webkit.WebView;
+import android.widget.EditText;
 
 public class MainActivity extends Activity {
 
+	private WebView webV;
+	private EditText url;
+	private String tempURL;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		webV = (WebView)findViewById(R.id.webView1);
+		url = (EditText)findViewById(R.id.search_bar);
 	}
 
 	@Override
@@ -30,5 +39,11 @@ public class MainActivity extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	public void goToURL(View v)
+	{
+		tempURL = url.getText().toString();
+		webV.loadUrl(tempURL);
 	}
 }
