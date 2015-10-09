@@ -5,12 +5,14 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.EditText;
 
 public class MainActivity extends Activity {
 
 	private WebView webV;
+	private WebSettings webS;
 	private EditText url;
 	private String tempURL;
 	
@@ -19,6 +21,8 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		webV = (WebView)findViewById(R.id.webView1);
+		webS = webV.getSettings();
+		webS.setJavaScriptEnabled(true);
 		url = (EditText)findViewById(R.id.search_bar);
 	}
 
